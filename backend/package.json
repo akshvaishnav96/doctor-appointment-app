@@ -1,0 +1,21 @@
+{
+  "name": "doctor_appointment_booking_system",
+  "version": "1.0.0",
+  "description": "This is a full-stack web application designed to provide patients with a smooth and user-friendly interface for booking doctor appointments online. The system allows doctors to define their available time slots and patients to view and book available appointments in real-time.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "author": "akash diwakar",
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.8.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "mongoose": "^8.17.0"
+  }
+}
