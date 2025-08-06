@@ -11,10 +11,10 @@ import { generateSlots } from "../utils/slotUtils.js";
  */
 export const bookAppointment = async (req, res) => {
   try {
-    const { doctorId, date, time, patientName } = req.body;
+    const { doctorId, date, time, patientName, patientMobile } = req.body;
 
     // Input validation
-    if (!doctorId || !date || !time || !patientName) {
+    if (!doctorId || !date || !time || !patientName || !patientMobile) {
       return sendError(res, "All fields are required", 400);
     }
     // Validate patient name — must contain only letters (A-Z, a-z)
@@ -82,6 +82,7 @@ export const bookAppointment = async (req, res) => {
       date,
       time,
       patientName,
+      patientMobile,
     }).save();
 
     return sendSuccess(

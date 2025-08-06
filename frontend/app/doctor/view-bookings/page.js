@@ -220,6 +220,7 @@ export default function ViewBookingsPage() {
                   <th className="text-left p-3 border-b">Time</th>
                   <th className="text-left p-3 border-b">Doctor ID</th>
                   <th className="text-left p-3 border-b">Patient Name</th>
+                  <th className="text-left p-3 border-b">Mobile</th>
                   <th className="text-left p-3 border-b">Booked At</th>
                   <th className="text-left p-3 border-b">Actions</th>
                 </tr>
@@ -233,6 +234,7 @@ export default function ViewBookingsPage() {
                     </td>
                     <td className="p-3 border-b">Doctor {booking.doctorId}</td>
                     <td className="p-3 border-b">{booking.patientName}</td>
+                    <td className="p-3 border-b">{booking.patientMobile}</td>
                     <td className="p-3 border-b text-sm text-gray-500">
                       {new Date(booking.createdAt).toLocaleString()}
                     </td>

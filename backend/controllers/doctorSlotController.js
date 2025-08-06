@@ -92,8 +92,7 @@ export const getDoctorSlots = async (req, res) => {
     if (date) query.date = date;
 
     const slots = await DoctorSlot.find(query).sort({ date: 1, startTime: 1 });
-    res.status(200).json(slots);
-    return sendSuccess(res, { slots });
+    return res.status(200).json(slots);
   } catch (err) {
     console.error("Error fetching doctor slots:", err);
     return sendError(res, err);

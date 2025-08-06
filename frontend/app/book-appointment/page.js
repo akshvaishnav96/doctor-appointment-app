@@ -18,6 +18,7 @@ export default function BookAppointmentPage() {
   const [showBookingModal, setShowBookingModal] = useState(false);
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [patientName, setPatientName] = useState("");
+  const [patientMobile, setPatientMobile] = useState("");
 
   const today = new Date().toISOString().split("T")[0];
   const todayDateObj = new Date(today);
@@ -98,12 +99,18 @@ export default function BookAppointmentPage() {
       setMessage("Please enter patient name");
       return;
     }
+
+    if (!patientMobile.trim()) {
+      setMessage("Please enter Mobile");
+      return;
+    }
     try {
       const result = await api.bookAppointment({
         doctorId: parseInt(doctorId),
         date: currentDate,
         time: selectedSlot,
         patientName: patientName.trim(),
+        patientMobile: patientMobile.trim(),
       });
 
       if (result.error) {
@@ -112,6 +119,7 @@ export default function BookAppointmentPage() {
         setMessage("Appointment booked successfully!");
         setShowBookingModal(false);
         setPatientName("");
+        setPatientMobile("");
         setSelectedSlot(null);
         await loadSlots();
         await loadAllSlots();
@@ -125,6 +133,7 @@ export default function BookAppointmentPage() {
   const handleBookingCancel = () => {
     setShowBookingModal(false);
     setPatientName("");
+    setPatientMobile("");
     setSelectedSlot(null);
     setMessage("");
   };
@@ -401,6 +410,13 @@ export default function BookAppointmentPage() {
               placeholder="Enter patient name"
               className="w-full p-3 border rounded-lg mb-4"
               autoFocus
+            />
+            <input
+              type="tel"
+              value={patientMobile}
+              onChange={(e) => setPatientMobile(e.target.value)}
+              placeholder="Enter 10-digit mobile number"
+              className="w-full p-3 border rounded-lg mb-4"
             />
 
             <div className="flex space-x-3">
